@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+    <!-- Load the Paper.js library -->
+    <script type="text/javascript" src="js/paper.js"></script>
+    <!-- Define inlined PaperScript associate it with myCanvas -->
+    <script type="text/paperscript" canvas="myCanvas">
+      tool.maxDistance = 50;
+      tool.minDistance = 5;
+
+      function onMouseDrag(event) {
+        var circle = new Path.Circle({
+          center: event.middlePoint,
+          radius: event.delta.length / 2
+        });
+        var r = 1-event.delta.length/20 - 0.2
+        var g = 0.2+event.delta.length/60
+        var b = 0.5+event.delta.length/75
+        circle.fillColor = new Color(r, g, b);
+      }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+      <canvas id="myCanvas" resize></canvas>
+    </body>
+</html>
